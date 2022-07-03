@@ -10,4 +10,8 @@ public class PlayerGroundedState : PlayerBaseState
         Debug.Log("In the Grounded State");
     }
     public override void ExitState() { }
+    public override void CheckStates() {
+        if (_stateManager._isWalking)
+            SwitchState(_factory.Walk());
+    }
 }

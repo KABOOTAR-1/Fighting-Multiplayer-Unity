@@ -14,6 +14,7 @@ public abstract class PlayerBaseState
     public abstract void EnterState();
     public abstract void ExitState();
 
+    public abstract void CheckStates();
     void UpdateStates() { }
    protected void SwitchState(PlayerBaseState newState) {
         ExitState();
