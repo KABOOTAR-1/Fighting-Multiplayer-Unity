@@ -8,16 +8,18 @@ public class PlayerStateManager : MonoBehaviour
     PlayerStateFactory _states;
     bool isWalking;
     Animator animator;
+    bool iSAttacking=false;
     public bool _isWalking { get { return isWalking; } }
     public bool _isJumping = false;
 
     public PlayerBaseState currentState { get { return _currentState; } set { _currentState = value; } }
     public bool isJumping { get { return _isJumping; } set { _isJumping=value; } }
     public Animator Anime { get { return animator; } }
+    public bool _isAttacking { get { return iSAttacking; } set { iSAttacking=value; } }
     private void Awake()
     {
         _states=new PlayerStateFactory(this);
-        _currentState = _states.Grounded();
+        _currentState = _states.Walk();
         _currentState.EnterState();
         animator = GetComponent<Animator>();
     }
@@ -31,11 +33,9 @@ public class PlayerStateManager : MonoBehaviour
     {
         isWalking=Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.A);
         _isJumping = Input.GetButton("Jump");
+        _isAttacking = Input.GetKeyDown(KeyCode.I);
         currentState.CheckStates();
     }
 
-    public void Move()
-    {
-        transform.Translate(transform.right * Input.GetAxisRaw("Horizontal") * Time.deltaTime * 10f);
-    }
+   
 }

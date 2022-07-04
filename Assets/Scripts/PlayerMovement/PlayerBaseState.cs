@@ -11,6 +11,7 @@ public abstract class PlayerBaseState
         _stateManager = currentContext;
         _factory = playerStateFactory;
     }
+
     public abstract void EnterState();
     public abstract void ExitState();
 
