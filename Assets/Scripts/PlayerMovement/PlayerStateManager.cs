@@ -34,6 +34,7 @@ public class PlayerStateManager : MonoBehaviour
         isWalking=Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.A);
         _isJumping = Input.GetButton("Jump");
         _isAttacking = Input.GetKeyDown(KeyCode.I);
+        Anime.SetBool("IsAttacking", _isAttacking);
         currentState.CheckStates();
     }
 

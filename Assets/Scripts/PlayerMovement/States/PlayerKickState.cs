@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerKickState : MonoBehaviour
+public class PlayerKickState : PlayerBaseState
 {
     // Start is called before the first frame update
-    void Start()
+    public PlayerKickState(PlayerStateManager currentContext, PlayerStateFactory playerStateFactory) : base(currentContext, playerStateFactory) { }
+
+    public override void EnterState()
     {
-        
+        Debug.Log("In HUrricane");
+    }
+    public override void ExitState() { }
+
+    public override void CheckStates()
+    {
+        _stateManager.Anime.SetTrigger("Hurricane Kick");
+        SwitchState(_factory.Walk());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

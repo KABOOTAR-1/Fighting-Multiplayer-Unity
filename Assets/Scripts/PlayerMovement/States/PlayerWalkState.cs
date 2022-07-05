@@ -16,13 +16,16 @@ public class PlayerWalkState : PlayerBaseState
     public override void CheckStates()
     {
        
-        if (Input.GetKeyDown(KeyCode.Space)) 
+        if (_stateManager.isJumping) 
         {
             SwitchState(_factory.Jump());
-            return;
+           
         }
         if (_stateManager._isAttacking)
+        {
             SwitchState(_factory.HurricaneKick());
+
+        }
 
         x = Mathf.MoveTowards(x, Input.GetAxis("Horizontal") , 1f);
         _stateManager.Anime.SetFloat("Movement", x);

@@ -22,5 +22,8 @@ public class PlayerStateFactory
         return new PlayerHurricaneState(_context, this);
     }
 
-
+    public PlayerBaseState Kick()
+    {
+        return new PlayerKickState(_context, this);
+    }
 }

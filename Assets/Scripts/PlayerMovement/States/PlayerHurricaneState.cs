@@ -9,13 +9,22 @@ public class PlayerHurricaneState : PlayerBaseState
     public override void EnterState()
     {
         Debug.Log("In HUrricane");
+        _stateManager.StartCoroutine(ExecuteHurricaneKick());
     }
     public override void ExitState() { }
 
     public override void CheckStates()
-    {          
-        _stateManager.Anime.SetTrigger("Hurricane Kick");
-        SwitchState(_factory.Walk());
+    {
+      
     }
 
+    IEnumerator ExecuteHurricaneKick()
+    {
+        _stateManager.Anime.SetTrigger("Hurricane Kick");
+        yield return new WaitForSeconds(_stateManager.Anime.GetCurrentAnimatorClipInfo(0).Length);
+        SwitchState(_factory.Walk());
+        yield return null;
+
+
+    }
 }
