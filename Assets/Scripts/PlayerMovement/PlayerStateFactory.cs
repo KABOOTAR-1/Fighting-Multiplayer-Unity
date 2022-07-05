@@ -17,6 +17,10 @@ public class PlayerStateFactory
         return new PlayerJumpState(_context,this);
     }
 
+    public PlayerBaseState Attack()
+    {
+        return new PlayerAttackState(_context,this);
+    }
     public PlayerBaseState HurricaneKick()
     {
         return new PlayerHurricaneState(_context, this);

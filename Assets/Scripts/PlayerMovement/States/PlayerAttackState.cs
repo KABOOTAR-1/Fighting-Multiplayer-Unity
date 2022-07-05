@@ -2,10 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFireBallState : PlayerBaseState
+enum Attack
+{
+    Punch,
+    Kick,
+    HurricaneKick,
+    Fireball
+}
+public class PlayerAttackState : PlayerBaseState
 {
     // Start is called before the first frame update
-    public PlayerFireBallState(PlayerStateManager currentContext, PlayerStateFactory playerStateFactory) : base(currentContext, playerStateFactory) { }
+    public PlayerAttackState(PlayerStateManager currentContext, PlayerStateFactory playerStateFactory) : base(currentContext, playerStateFactory) { }
 
     public override void EnterState()
     {
@@ -18,3 +25,6 @@ public class PlayerFireBallState : PlayerBaseState
         SwitchState(_factory.Walk());
     }
 }
+    // Start is called before the first frame update
+
+

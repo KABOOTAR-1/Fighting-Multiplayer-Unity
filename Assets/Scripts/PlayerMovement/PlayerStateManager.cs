@@ -8,6 +8,7 @@ public class PlayerStateManager : MonoBehaviour
     PlayerStateFactory _states;
     bool isWalking;
     Animator animator;
+    float x = 0;
     bool iSAttacking=false;
     public bool _isWalking { get { return isWalking; } }
     public bool _isJumping = false;
@@ -29,10 +30,11 @@ public class PlayerStateManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        isWalking=Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.A);
-        _isJumping = Input.GetButton("Jump");
+       
+        isWalking =Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.A);
+        _isJumping = Input.GetButtonDown("Jump");
         _isAttacking = Input.GetKeyDown(KeyCode.I);
         Anime.SetBool("IsAttacking", _isAttacking);
         currentState.CheckStates();
