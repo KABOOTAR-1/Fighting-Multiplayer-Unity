@@ -8,15 +8,16 @@ public class PlayerStateManager : MonoBehaviour
     PlayerStateFactory _states;
     bool isWalking;
     Animator animator;
-    float x = 0;
     bool iSAttacking=false;
-    public bool _isWalking { get { return isWalking; } }
-    public bool _isJumping = false;
+    bool _isJumping = false;
+    Attacked state = Attacked.Idle;
 
+    public bool _isWalking { get { return isWalking; } }
     public PlayerBaseState currentState { get { return _currentState; } set { _currentState = value; } }
     public bool isJumping { get { return _isJumping; } set { _isJumping=value; } }
     public Animator Anime { get { return animator; } }
     public bool _isAttacking { get { return iSAttacking; } set { iSAttacking=value; } }
+    public Attacked states { get { return state; } set { states = value; } }
     private void Awake()
     {
         _states=new PlayerStateFactory(this);
@@ -32,13 +33,40 @@ public class PlayerStateManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-       
-        isWalking =Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.A);
-        _isJumping = Input.GetButtonDown("Jump");
-        _isAttacking = Input.GetKeyDown(KeyCode.I);
-        Anime.SetBool("IsAttacking", _isAttacking);
-        currentState.CheckStates();
+        StartCoroutine(Inputs());        
     }
 
+    IEnumerator Inputs()
+    {
+        isWalking = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A);
+        _isJumping = Input.GetButtonDown("Jump");
+        AttackInput();
+        Anime.SetBool("IsAttacking", _isAttacking);
+        currentState.CheckStates();
+        yield return null;
+    }
+    void AttackInput()
+    {
+        if (Input.GetKeyDown(KeyCode.I)) 
+        {
+            iSAttacking = true;
+            state = Attacked.Fireball;
+        }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            iSAttacking = true;
+            state = Attacked.HurricaneKick;
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            iSAttacking = true;
+            state = Attacked.Punch;
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            iSAttacking = true;
+            state = Attacked.Kick;
+        }
+    }
    
 }

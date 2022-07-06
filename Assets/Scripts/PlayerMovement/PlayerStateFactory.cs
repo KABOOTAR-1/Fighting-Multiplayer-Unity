@@ -3,10 +3,11 @@
 public class PlayerStateFactory 
 {
     PlayerStateManager _context;
-    
+  
     public PlayerStateFactory(PlayerStateManager _currentContext)
     {
         _context = _currentContext;
+     
     }
 
   
@@ -17,9 +18,9 @@ public class PlayerStateFactory
         return new PlayerJumpState(_context,this);
     }
 
-    public PlayerBaseState Attack()
+    public PlayerBaseState Attack(Attacked state)
     {
-        return new PlayerAttackState(_context,this);
+        return new PlayerAttackState(_context,this,state) ;
     }
     public PlayerBaseState HurricaneKick()
     {
@@ -29,5 +30,15 @@ public class PlayerStateFactory
     public PlayerBaseState Kick()
     {
         return new PlayerKickState(_context, this);
+    }
+
+    public PlayerBaseState Punch()
+    {
+        return new PlayerPunchState(_context, this);
+    }
+
+    public PlayerBaseState FireBall()
+    {
+        return new PlayerFireBallState(_context, this);
     }
 }

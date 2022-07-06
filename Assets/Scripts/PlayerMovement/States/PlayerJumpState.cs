@@ -24,7 +24,7 @@ public class PlayerJumpState :PlayerBaseState
     {
         _stateManager.Anime.SetTrigger("Jumping");
         yield return new WaitForSeconds(_stateManager.Anime.GetCurrentAnimatorClipInfo(0).Length);
-        _stateManager._isJumping = false;
+        _stateManager.isJumping = false;
         SwitchState(_factory.Walk());
         yield return null;
     }

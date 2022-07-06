@@ -9,12 +9,22 @@ public class PlayerPunchState : PlayerBaseState
 
     public override void EnterState()
     {
-        Debug.Log("Attack");
+        Debug.Log("Punch");
+        _stateManager.StartCoroutine(ExecutePunch());
     }
     public override void ExitState() { }
 
     public override void CheckStates()
     {
+       
+    }
+
+    IEnumerator ExecutePunch()
+    {
+        _stateManager.Anime.SetTrigger("Punch");
+        yield return new WaitForSeconds(_stateManager.Anime.GetCurrentAnimatorClipInfo(0).Length);
+        _stateManager.Anime.ResetTrigger("Punch");
         SwitchState(_factory.Walk());
+        yield return null;
     }
 }

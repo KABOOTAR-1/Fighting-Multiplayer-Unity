@@ -9,14 +9,23 @@ public class PlayerKickState : PlayerBaseState
 
     public override void EnterState()
     {
-        Debug.Log("In HUrricane");
+        Debug.Log("Kicking");
+        _stateManager.StartCoroutine(ExecuteKick());
     }
     public override void ExitState() { }
 
     public override void CheckStates()
     {
-        _stateManager.Anime.SetTrigger("Hurricane Kick");
+       
+    }
+
+    IEnumerator ExecuteKick()
+    {
+        _stateManager.Anime.SetTrigger("Kicking");
+        yield return new WaitForSeconds(_stateManager.Anime.GetCurrentAnimatorClipInfo(0).Length);
+        _stateManager.Anime.ResetTrigger("Kicking");
         SwitchState(_factory.Walk());
+        yield return null;
     }
 
 }

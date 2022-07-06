@@ -22,6 +22,7 @@ public class PlayerHurricaneState : PlayerBaseState
     {
         _stateManager.Anime.SetTrigger("Hurricane Kick");
         yield return new WaitForSeconds(_stateManager.Anime.GetCurrentAnimatorClipInfo(0).Length);
+        _stateManager.Anime.ResetTrigger("Hurricane Kick");
         SwitchState(_factory.Walk());
         yield return null;
 

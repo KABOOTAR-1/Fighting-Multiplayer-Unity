@@ -6,20 +6,17 @@ public class PlayerWalkState : PlayerBaseState
 {
    float x=0f;
     public PlayerWalkState(PlayerStateManager currentContext, PlayerStateFactory playerStateFactory) : base(currentContext, playerStateFactory) { }
-    public override void EnterState() {
+    public override void EnterState() 
+    {
         Debug.Log("I am walking");
-       
-
     }
     public override void ExitState() { }
 
     public override void CheckStates()
     {
-
         _stateManager.StartCoroutine(Walk());
         x = Mathf.MoveTowards(x, Input.GetAxis("Horizontal"), 1f);
         _stateManager.Anime.SetFloat("Movement", x);
-
     }
 
     IEnumerator Walk()
@@ -28,12 +25,10 @@ public class PlayerWalkState : PlayerBaseState
         {
             SwitchState(_factory.Jump());
             _stateManager.isJumping = false;
-
         }
         if (_stateManager._isAttacking)
         {
-            SwitchState(_factory.Attack());
-
+            SwitchState(_factory.Attack(_stateManager.states));
         }
        
         yield return null;
