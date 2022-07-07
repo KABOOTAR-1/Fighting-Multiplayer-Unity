@@ -11,7 +11,10 @@ public class PlayerStateManager : MonoBehaviour
     bool iSAttacking=false;
     bool _isJumping = false;
     Attacked state = Attacked.Idle;
-
+    [SerializeField]
+    GameObject FireBallPrefab;
+    [SerializeField]
+    Transform FireballPos;
     public bool _isWalking { get { return isWalking; } }
     public PlayerBaseState currentState { get { return _currentState; } set { _currentState = value; } }
     public bool isJumping { get { return _isJumping; } set { _isJumping=value; } }
@@ -24,6 +27,7 @@ public class PlayerStateManager : MonoBehaviour
         _currentState = _states.Walk();
         _currentState.EnterState();
         animator = GetComponent<Animator>();
+       
     }
     void Start()
     {
@@ -68,5 +72,9 @@ public class PlayerStateManager : MonoBehaviour
             state = Attacked.Kick;
         }
     }
-   
+
+    public void InstanatiteFireball()
+    {
+        Instantiate(FireBallPrefab, FireballPos.position ,Quaternion.identity).AddComponent<FireBall>(); ;
+    }
 }

@@ -21,7 +21,7 @@ public class PlayerFireBallState : PlayerBaseState
     IEnumerator ExecuteFireBall()
     {
         _stateManager.Anime.SetTrigger("Fireball");
-        yield return new WaitForSeconds(_stateManager.Anime.GetCurrentAnimatorClipInfo(0).Length);
+        yield return new WaitForSeconds(_stateManager.Anime.GetCurrentAnimatorClipInfo(0).Length);      
         _stateManager.Anime.ResetTrigger("Fireball");
         SwitchState(_factory.Walk());
         yield return null;
