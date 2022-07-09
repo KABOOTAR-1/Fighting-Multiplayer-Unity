@@ -7,26 +7,32 @@ public class HitBox : MonoBehaviour,IHitDetector
     [SerializeField]private BoxCollider m_collider;
     [SerializeField] LayerMask m_layermask;
     [SerializeField] private HurtBoxMask m_boxMask=HurtBoxMask.enemy;
-
+    RaycastHit[] hits;
     private float m_thickness = 0.5f;
     private IHitResponder m_hitResponder;
+    Vector3 _halfextends;
     public IHitResponder hitResponder { get => m_hitResponder; set => m_hitResponder= value; }
 
+    void Start()
+    {
+        m_collider = GetComponent<BoxCollider>();
+        m_layermask = LayerMask.GetMask("HurtBox");
+    }
     public void CheckHit()
     {
         Vector3 scale = new Vector3(
-            m_collider.size.x * transform.lossyScale.x,
+            m_collider.size.x* transform.lossyScale.x,
             m_collider.size.y * transform.lossyScale.y,
-            m_collider.size.z*transform.lossyScale.z
+            m_collider.size.z * transform.lossyScale.z
         );
         float _distance = scale.y - m_thickness;
         Vector3 direction = transform.up;
         Vector3 centre=transform.TransformPoint(m_collider.center);
         Vector3 start = centre - direction * (_distance / 2);
-        Vector3 _halfextends=new Vector3(scale.x/2, m_thickness/2, scale.z/2);
+         _halfextends=new Vector3(scale.x/2-0.01f, scale.y/2-0.01f, scale.z/2-0.01f);
         Quaternion orientation = transform.rotation;
 
-        RaycastHit[] hits=Physics.BoxCastAll(start,_halfextends,direction,orientation,_distance,m_layermask);
+        hits=Physics.BoxCastAll(start,_halfextends,direction,orientation,0,m_layermask);
 
         HitData hitdata = null;
         IHurtBox _hurtbox = null;
@@ -59,6 +65,27 @@ public class HitBox : MonoBehaviour,IHitDetector
         }
     }
 
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        //Check if there has been a hit yet
+        if (hits!=null)
+        {
+            //Draw a Ray forward from GameObject toward the hit
+            //Gizmos.DrawRay(transform.position, transform.lossyScale);
+            //Draw a cube that extends to where the hit exists
+            Gizmos.DrawWireCube (transform.TransformPoint (m_collider.center),new Vector3(_halfextends.x*2,_halfextends.y*2,_halfextends.z*2) );
+        }
+        //If there hasn't been a hit yet, draw the ray at the maximum distance
+        else
+        {
+            //Draw a Ray forward from GameObject toward the maximum distance
+            Gizmos.DrawRay(transform.position, transform.lossyScale);
+            //Draw a cube at the maximum distance
+            Gizmos.DrawWireCube(m_collider.center, transform.lossyScale);
+        }
+    }
 
 
 }

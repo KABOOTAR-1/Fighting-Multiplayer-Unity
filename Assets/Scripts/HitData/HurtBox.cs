@@ -8,6 +8,7 @@ public class HurtBox : MonoBehaviour,IHurtBox
     [SerializeField] private GameObject m_owner = null;
     [SerializeField] private HurtboxType m_hurtboxtype = HurtboxType.Enemy;
     private IHurtResponder m_hurtResponder;  
+
     public bool Active { get=>m_Active;}
 
     public GameObject owner { get=>m_owner;}
@@ -23,6 +24,11 @@ public class HurtBox : MonoBehaviour,IHurtBox
             Debug.Log("hurtResponder is null");
 
         return true;
+    }
+
+    void Start()
+    {
+        m_owner = transform.parent.gameObject;
     }
 
    

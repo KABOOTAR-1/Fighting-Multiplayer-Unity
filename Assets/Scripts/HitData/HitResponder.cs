@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class HitResponder : MonoBehaviour,IHitResponder
 {
-    public static bool m_attack=true;
+    public bool m_attack=true;
+    
     [SerializeField] private int m_damage = 10;
     [SerializeField] private HitBox m_box;
     public int Damage { get => m_damage; } 
@@ -22,7 +23,14 @@ public class HitResponder : MonoBehaviour,IHitResponder
     // Start is called before the first frame update
     void Start()
     {
+        m_box = GetComponent<HitBox>();
         m_box.hitResponder = this;
+       
+    }
+
+    public void Attack()
+    {
+        m_box.CheckHit();
     }
 
     // Update is called once per frame
@@ -30,7 +38,11 @@ public class HitResponder : MonoBehaviour,IHitResponder
     {
         if (m_attack)
         {
-            m_box.CheckHit();
+            Attack();
+            //m_attack = false;
         }
     }
+
+    //void OnTriggerEnter()
+   
 }
