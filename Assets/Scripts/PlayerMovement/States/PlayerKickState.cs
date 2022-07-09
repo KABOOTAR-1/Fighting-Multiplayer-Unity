@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PlayerKickState : PlayerBaseState
 {
-    // Start is called before the first frame update
+    
     public PlayerKickState(PlayerStateManager currentContext, PlayerStateFactory playerStateFactory) : base(currentContext, playerStateFactory) { }
-
     public override void EnterState()
     {
         Debug.Log("Kicking");

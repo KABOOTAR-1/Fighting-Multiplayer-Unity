@@ -34,15 +34,12 @@ public class HitResponder : MonoBehaviour,IHitResponder
     }
 
     // Update is called once per frame
+   
     void Update()
     {
-        if (m_attack)
-        {
-            Attack();
-            //m_attack = false;
-        }
+        Invoke("Attack",0f);
     }
 
-    //void OnTriggerEnter()
+    
    
 }
