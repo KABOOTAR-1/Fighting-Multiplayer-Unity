@@ -1194,6 +1194,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 670334429}
+  - component: {fileID: 670334431}
+  - component: {fileID: 670334430}
+  - component: {fileID: 670334432}
   m_Layer: 0
   m_Name: mixamorig:LeftLeg
   m_TagString: Untagged
@@ -1216,6 +1219,50 @@ Transform:
   m_Father: {fileID: 183667536}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &670334430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670334428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61c43614bea3a6245bf625cd3e59a9f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_damage: 10
+  m_box: {fileID: 670334431}
+--- !u!114 &670334431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670334428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02084bbd5136ff41be07393f33a6165, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_collider: {fileID: 670334432}
+  m_layermask:
+    serializedVersion: 2
+    m_Bits: 128
+  m_boxMask: 2
+--- !u!65 &670334432
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670334428}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.17026283, y: 0.6661872, z: 0.28213298}
+  m_Center: {x: -0.15780714, y: 0.16690685, z: 0.03809326}
 --- !u!1 &677799740
 GameObject:
   m_ObjectHideFlags: 0
@@ -2054,8 +2101,6 @@ GameObject:
   - component: {fileID: 1071444297}
   - component: {fileID: 1071444299}
   - component: {fileID: 1071444300}
-  - component: {fileID: 1071444303}
-  - component: {fileID: 1071444302}
   - component: {fileID: 1071444301}
   m_Layer: 0
   m_Name: The Boss
@@ -2138,42 +2183,10 @@ BoxCollider:
   m_GameObject: {fileID: 1071444296}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.750686, y: 1.7921087, z: 0.74277997}
   m_Center: {x: -0.124657035, y: 0.9761104, z: -0.12861004}
---- !u!114 &1071444302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1071444296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b02084bbd5136ff41be07393f33a6165, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_collider: {fileID: 1071444301}
-  m_layermask:
-    serializedVersion: 2
-    m_Bits: 128
-  m_boxMask: 2
---- !u!114 &1071444303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1071444296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61c43614bea3a6245bf625cd3e59a9f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_attack: 1
-  m_damage: 10
-  m_box: {fileID: 1071444302}
 --- !u!1 &1101091007
 GameObject:
   m_ObjectHideFlags: 0

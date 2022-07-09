@@ -23,7 +23,7 @@ public class HitBox : MonoBehaviour,IHitDetector
         Vector3 direction = transform.up;
         Vector3 centre=transform.TransformPoint(m_collider.center);
         Vector3 start = centre - direction * (_distance / 2);
-        Vector3 _halfextends=new Vector3(scale.x, m_thickness, scale.z);
+        Vector3 _halfextends=new Vector3(scale.x/2, m_thickness/2, scale.z/2);
         Quaternion orientation = transform.rotation;
 
         RaycastHit[] hits=Physics.BoxCastAll(start,_halfextends,direction,orientation,_distance,m_layermask);
@@ -58,5 +58,7 @@ public class HitBox : MonoBehaviour,IHitDetector
             }
         }
     }
+
+
 
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HitResponder : MonoBehaviour,IHitResponder
 {
-    [SerializeField] private bool m_attack;
+    public static bool m_attack=true;
     [SerializeField] private int m_damage = 10;
     [SerializeField] private HitBox m_box;
     public int Damage { get => m_damage; } 
