@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HurtResponder : MonoBehaviour,IHurtResponder
 {
+    public int val=0;
     private List<HurtBox> m_hurtbox= new List<HurtBox>();
     public bool Checkhit(HitData hitData)
     {
@@ -12,6 +13,7 @@ public class HurtResponder : MonoBehaviour,IHurtResponder
 
     public void Response(HitData hitData)
     {
+        val++;
         Debug.Log("Hurt Response");
     }
 
@@ -23,6 +25,7 @@ public class HurtResponder : MonoBehaviour,IHurtResponder
         foreach (HurtBox box in m_hurtbox)
             box.hurtResponder = this;
     }
+
 
 
 }

@@ -8,6 +8,7 @@ public class HitResponder : MonoBehaviour,IHitResponder
     
     [SerializeField] private int m_damage = 10;
     [SerializeField] private HitBox m_box;
+   
     public int Damage { get => m_damage; } 
 
     public bool Checkhit(HitData hitData)
@@ -25,21 +26,42 @@ public class HitResponder : MonoBehaviour,IHitResponder
     {
         m_box = GetComponent<HitBox>();
         m_box.hitResponder = this;
+       enabled = true;
        
     }
 
     public void Attack()
     {
-        m_box.CheckHit();
+      
     }
 
     // Update is called once per frame
    
     void Update()
     {
-        Invoke("Attack",0f);
+        if (enabled == true)
+        {
+            if (m_box.hits != null)
+            {
+                foreach (var ray in m_box.hits)
+                {
+                    var box = ray.collider.GetComponentInParent<HurtResponder>();
+                    box.val++;
+                    if (box.val > 0)
+                    {
+                        m_box.CheckHit();
+                        box.val = 0;
+                       
+                        return;
+
+                    }
+                }
+            }
+        }
     }
 
-    
    
+
+
+
 }
