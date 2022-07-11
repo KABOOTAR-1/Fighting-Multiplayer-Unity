@@ -98,7 +98,7 @@ public class HitBox : MonoBehaviour,IHitDetector
             //Draw a Ray forward from GameObject toward the maximum distance
             Gizmos.DrawRay(transform.position, transform.lossyScale);
             //Draw a cube at the maximum distance
-            Gizmos.DrawWireCube(m_collider.center, transform.lossyScale);
+            Gizmos.DrawWireCube(transform.TransformPoint(m_collider.center),new Vector3(_halfextends.x * 2, _halfextends.y * 2, _halfextends.z * 2));
         }
     }
 
