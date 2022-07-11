@@ -20,8 +20,6 @@ public class HitResponder : MonoBehaviour,IHitResponder
     {
  
     }
-
-    // Start is called before the first frame update
     void Start()
     {
         m_box = GetComponent<HitBox>();
@@ -29,26 +27,11 @@ public class HitResponder : MonoBehaviour,IHitResponder
        enabled = false;
        
     }
-
-    public void Attack()
-    {
-      
-    }
-
-    // Update is called once per frame
-
     void Update()
     {
         if(m_attack)
         m_box.CheckHit();
     }
-
-    public void GG()
-    {
-
-    }
-   
-
 
 
 }

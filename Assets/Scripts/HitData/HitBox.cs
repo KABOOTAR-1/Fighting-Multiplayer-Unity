@@ -102,13 +102,4 @@ public class HitBox : MonoBehaviour,IHitDetector
         }
     }
 
-    public int Len()
-    {
-        if(hits!=null)
-        return hits.Length;
-
-        return 0;
-    }
-
-
 }

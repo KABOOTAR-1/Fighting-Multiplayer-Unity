@@ -89,11 +89,5 @@ public class PlayerStateManager : MonoBehaviour
     {
         Instantiate(FireBallPrefab, FireballPos.position ,Quaternion.identity).AddComponent<FireBall>(); ;
     }
-
-    public void Kick()
-    {
-        hr[3].enabled = false;
-        
-    }
 }   
  
