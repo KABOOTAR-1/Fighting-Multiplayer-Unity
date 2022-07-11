@@ -6,12 +6,14 @@ public class HitBox : MonoBehaviour,IHitDetector
 {
     [SerializeField]private BoxCollider m_collider;
     [SerializeField] LayerMask m_layermask;
-    [SerializeField] private HurtBoxMask m_boxMask=HurtBoxMask.enemy;
+    [SerializeField] public HurtBoxMask m_boxMask=HurtBoxMask.enemy;
     public RaycastHit[] hits;
     private float m_thickness = 0.5f;
-    private IHitResponder m_hitResponder;
+    public IHitResponder m_hitResponder;
     IHurtBox own;
     Vector3 _halfextends;
+    public Vector3 centre;
+    [SerializeField] HitResponder res;
     public IHitResponder hitResponder { get => m_hitResponder; set => m_hitResponder= value; }
 
     void Start()
@@ -19,28 +21,30 @@ public class HitBox : MonoBehaviour,IHitDetector
         m_collider = GetComponent<BoxCollider>();
         m_layermask = LayerMask.GetMask("HurtBox");
         own=transform.parent.GetComponentInChildren<IHurtBox>();    
+        res=transform.GetComponent<HitResponder>();
     }
 
     void Update()
     {
 
+       
+    }
+    public void CheckHit()
+    {
         Vector3 scale = new Vector3(
-            m_collider.size.x * transform.lossyScale.x,
-            m_collider.size.y * transform.lossyScale.y,
-            m_collider.size.z * transform.lossyScale.z
-        );
+           m_collider.size.x * transform.lossyScale.x,
+           m_collider.size.y * transform.lossyScale.y,
+           m_collider.size.z * transform.lossyScale.z
+       );
         float _distance = scale.y - m_thickness;
         Vector3 direction = transform.up;
-        Vector3 centre = transform.TransformPoint(m_collider.center);
+         centre= transform.TransformPoint(m_collider.center);
         Vector3 start = centre - direction * (_distance / 2);
         _halfextends = new Vector3(scale.x / 2 - 0.01f, scale.y / 2 - 0.01f, scale.z / 2 - 0.01f);
         Quaternion orientation = transform.rotation;
 
-        hits = Physics.BoxCastAll(start, _halfextends, direction, orientation,0.4f, m_layermask);
-    }
-    public void CheckHit()
-    {
-        Vector3 centre = transform.TransformPoint(m_collider.center);
+        hits = Physics.BoxCastAll(start, _halfextends, direction, orientation, 0.4f, m_layermask);
+       centre = transform.TransformPoint(m_collider.center);
 
         HitData hitdata = null;
         IHurtBox _hurtbox = null;
@@ -66,6 +70,9 @@ public class HitBox : MonoBehaviour,IHitDetector
                     {
                         hitdata.hitDetector.hitResponder?.Response(hitdata);
                         hitdata.hurtbox.hurtResponder?.Response(hitdata);
+                            hits = null;
+                            res.m_attack = false;
+                            res.enabled = false; 
                     }
 
                 }

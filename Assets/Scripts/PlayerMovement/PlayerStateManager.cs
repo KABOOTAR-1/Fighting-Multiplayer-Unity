@@ -33,7 +33,7 @@ public class PlayerStateManager : MonoBehaviour
     }
     void Start()
     {
-        Time.timeScale = 0.1f;
+        Time.timeScale = 0.3f;
     }
 
     // Update is called once per frame
@@ -58,24 +58,28 @@ public class PlayerStateManager : MonoBehaviour
             iSAttacking = true;
             state = Attacked.Fireball;
             hr[2].enabled = true;
+            hr[2].m_attack = true;
         }
         if (Input.GetKeyDown(KeyCode.J))
         {
             iSAttacking = true;
             state = Attacked.HurricaneKick;
             hr[1].enabled = true;
+            hr[1].m_attack = true;
         }
         if (Input.GetKeyDown(KeyCode.K))
         {
             iSAttacking = true;
             state = Attacked.Punch;
             hr[3].enabled = true;
+            hr[3].m_attack = true;
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
             iSAttacking = true;
             state = Attacked.Kick;
             hr[0].enabled = true;
+            hr[0].m_attack = true;
         }
         
 
