@@ -26,5 +26,7 @@ public class PlayerPunchState : PlayerBaseState
         _stateManager.Anime.ResetTrigger("Punch");
         SwitchState(_factory.Walk());
         yield return null;
+        _stateManager.hr[3].m_attack = false;
+        _stateManager.hr[3].enabled = false;
     }
 }

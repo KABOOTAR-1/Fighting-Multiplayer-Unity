@@ -25,7 +25,8 @@ public class PlayerHurricaneState : PlayerBaseState
         _stateManager.Anime.ResetTrigger("Hurricane Kick");
         SwitchState(_factory.Walk());
         yield return null;
-
+        _stateManager.hr[1].m_attack = false;
+        _stateManager.hr[1].enabled = false;
 
     }
 }

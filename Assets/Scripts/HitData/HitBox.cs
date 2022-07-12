@@ -70,14 +70,15 @@ public class HitBox : MonoBehaviour,IHitDetector
                     {
                         hitdata.hitDetector.hitResponder?.Response(hitdata);
                         hitdata.hurtbox.hurtResponder?.Response(hitdata);
-                            hits = null;
-                            res.m_attack = false;
-                            res.enabled = false; 
+                        hits = null;
+                        res.m_attack = false;
+                        res.enabled = false;
                     }
 
                 }
             }
         }
+       
     }
 
     void OnDrawGizmos()

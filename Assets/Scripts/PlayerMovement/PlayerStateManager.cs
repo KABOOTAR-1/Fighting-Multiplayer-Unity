@@ -57,8 +57,8 @@ public class PlayerStateManager : MonoBehaviour
         {
             iSAttacking = true;
             state = Attacked.Fireball;
-            hr[2].enabled = true;
-            hr[2].m_attack = true;
+            //hr[2].enabled = true;
+            //hr[2].m_attack = true;
         }
         if (Input.GetKeyDown(KeyCode.J))
         {

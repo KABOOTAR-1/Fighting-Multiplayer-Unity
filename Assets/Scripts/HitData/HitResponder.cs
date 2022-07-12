@@ -23,14 +23,18 @@ public class HitResponder : MonoBehaviour,IHitResponder
     void Start()
     {
         m_box = GetComponent<HitBox>();
+        m_attack = false;
         m_box.hitResponder = this;
        enabled = false;
        
     }
     void Update()
     {
-        if(m_attack)
-        m_box.CheckHit();
+        if (m_attack)
+        {
+            m_box.CheckHit();
+            
+        }
     }
 
 

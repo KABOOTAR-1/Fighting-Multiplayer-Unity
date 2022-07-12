@@ -25,6 +25,8 @@ public class PlayerKickState : PlayerBaseState
         _stateManager.Anime.ResetTrigger("Kicking");
         SwitchState(_factory.Walk());
         yield return null;
+        _stateManager.hr[0].m_attack = false;
+        _stateManager.hr[0].enabled = false;
     }
 
 }
