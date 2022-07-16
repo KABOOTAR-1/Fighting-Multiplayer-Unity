@@ -15,6 +15,7 @@ public class PlayerStateManager : MonoBehaviour
     GameObject FireBallPrefab;
     [SerializeField]
     Transform FireballPos;
+    public Vector3 dir;
     [SerializeField] public HitResponder[] hr=new HitResponder[4];
     public bool _isWalking { get { return isWalking; } }
     public PlayerBaseState currentState { get { return _currentState; } set { _currentState = value; } }
@@ -33,7 +34,7 @@ public class PlayerStateManager : MonoBehaviour
     }
     void Start()
     {
-        Time.timeScale = 0.3f;
+        dir = Vector3.Normalize(transform.right);
     }
 
     // Update is called once per frame

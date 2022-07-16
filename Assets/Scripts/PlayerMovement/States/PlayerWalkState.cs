@@ -15,8 +15,8 @@ public class PlayerWalkState : PlayerBaseState
     public override void CheckStates()
     {
         _stateManager.StartCoroutine(Walk());
-        x = Mathf.MoveTowards(x, Input.GetAxis("Horizontal"), 1f);
-        _stateManager.Anime.SetFloat("Movement", x);
+        x = Mathf.MoveTowards(x, Input.GetAxis("Horizontal") , 1f);
+        _stateManager.Anime.SetFloat("Movement", -x*_stateManager.dir.z);
     }
 
     IEnumerator Walk()
