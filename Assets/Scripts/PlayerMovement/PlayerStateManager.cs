@@ -17,6 +17,7 @@ public class PlayerStateManager : MonoBehaviour
     Transform FireballPos;
     public Vector3 dir;
     [SerializeField] public HitResponder[] hr=new HitResponder[4];
+    public InstantiateFireball fireballmove;
     public bool _isWalking { get { return isWalking; } }
     public PlayerBaseState currentState { get { return _currentState; } set { _currentState = value; } }
     public bool isJumping { get { return _isJumping; } set { _isJumping=value; } }
@@ -35,6 +36,8 @@ public class PlayerStateManager : MonoBehaviour
     void Start()
     {
         dir = Vector3.Normalize(transform.right);
+        fireballmove = transform.GetComponentInChildren<InstantiateFireball>();
+        //Time.timeScale = 0.2f;
     }
 
     // Update is called once per frame
@@ -86,9 +89,9 @@ public class PlayerStateManager : MonoBehaviour
 
     }
 
-    public void InstanatiteFireball()
+   public void Fire()
     {
-        Instantiate(FireBallPrefab, FireballPos.position ,Quaternion.identity).AddComponent<FireBall>(); ;
+        fireballmove.InstanatiteFireBall(FireBallPrefab);
     }
 }   
  

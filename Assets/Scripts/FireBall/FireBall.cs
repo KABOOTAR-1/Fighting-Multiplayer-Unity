@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FireBall : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Transform player;
     void Start()
     {
         
@@ -15,7 +15,7 @@ public class FireBall : MonoBehaviour
     {
         if (transform != null)
         {
-            transform.Translate(transform.right * 0.06f);
+            transform.Translate(player.TransformDirection(player.transform.right) * 0.06f);
             StartCoroutine(Destroying());
         }
 
