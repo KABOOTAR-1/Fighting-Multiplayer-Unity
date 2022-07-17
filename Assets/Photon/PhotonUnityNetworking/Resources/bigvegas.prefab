@@ -1,5 +1,48 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &749837391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 749837392}
+  - component: {fileID: 749837393}
+  m_Layer: 0
+  m_Name: Fireballpos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &749837392
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749837391}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.4210855e-14, y: 0.986, z: 0.9130002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3995533505180414770}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &749837393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749837391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5cf59dbea02ac6479d31bd0a4fcf283, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &237672762361355597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1804,6 +1847,7 @@ GameObject:
   - component: {fileID: 3995533505180414770}
   - component: {fileID: 7030911050108037448}
   - component: {fileID: 3528647208268604722}
+  - component: {fileID: -6534226388417096353}
   m_Layer: 0
   m_Name: bigvegas
   m_TagString: Untagged
@@ -1827,6 +1871,7 @@ Transform:
   - {fileID: 3707208931786320522}
   - {fileID: 5847545440303314090}
   - {fileID: 2562719829298525852}
+  - {fileID: 749837392}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -1861,13 +1906,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cc8475841947e946af42be35025beb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireBallPrefab: {fileID: 1764565377317253338, guid: 2928c4fa379878f4aa2f52b182f15d0d, type: 3}
-  FireballPos: {fileID: 0}
+  FireBallPrefab: {fileID: 1764565377317253338, guid: 12dbc18a4cc2f3a41bc46e3952e7909c, type: 3}
+  FireballPos: {fileID: 749837392}
+  dir: {x: 0, y: 0, z: 0}
   hr:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  fireballmove: {fileID: 0}
+--- !u!114 &-6534226388417096353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4339548237716482440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &4372565599620812331
 GameObject:
   m_ObjectHideFlags: 0
