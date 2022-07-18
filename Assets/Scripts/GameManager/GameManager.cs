@@ -13,12 +13,12 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
       
-        PhotonNetwork.Instantiate(Player[PhotonNetwork.LocalPlayer.ActorNumber-1].name, pos[PhotonNetwork.LocalPlayer.ActorNumber - 1].position, Player[PhotonNetwork.LocalPlayer.ActorNumber-1].transform.rotation, 0);
+        
     }
     void Start()
     {
-       
-      
+        PhotonNetwork.Instantiate(Player[PhotonNetwork.LocalPlayer.ActorNumber - 1].name, pos[PhotonNetwork.LocalPlayer.ActorNumber - 1].position, Player[PhotonNetwork.LocalPlayer.ActorNumber - 1].transform.rotation, 0);
+
     }
 
    

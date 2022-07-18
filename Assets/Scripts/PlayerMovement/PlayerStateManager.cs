@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerStateManager : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class PlayerStateManager : MonoBehaviour
     public Animator Anime { get { return animator; } }
     public bool _isAttacking { get { return iSAttacking; } set { iSAttacking=value; } }
     public Attacked states { get { return state; } set { states = value; } }
+    PhotonView myview;
     private void Awake()
     {
         _states=new PlayerStateFactory(this);
@@ -37,12 +39,14 @@ public class PlayerStateManager : MonoBehaviour
     {
         dir = Vector3.Normalize(transform.right);
         fireballmove = transform.GetComponentInChildren<InstantiateFireball>();
+        myview = GetComponent<PhotonView>();
         //Time.timeScale = 0.2f;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(myview.IsMine)
         StartCoroutine(Inputs());        
     }
 
