@@ -5,16 +5,23 @@ using Photon.Pun;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject Player1;
-    [SerializeField] private GameObject Player2;
+    public GameObject[] Player = new GameObject[2];
+    public int x = 0;
+    public Transform[] pos=new Transform[2];
+   
 
-    [SerializeField] private Transform player1;
-    [SerializeField] private Transform player2;
+    private void Awake()
+    {
+      
+        PhotonNetwork.Instantiate(Player[PhotonNetwork.LocalPlayer.ActorNumber-1].name, pos[PhotonNetwork.LocalPlayer.ActorNumber - 1].position, Player[PhotonNetwork.LocalPlayer.ActorNumber-1].transform.rotation, 0);
+    }
     void Start()
     {
-        PhotonNetwork.Instantiate(Player1.name, player1.position, Quaternion.identity,0);
-        PhotonNetwork.Instantiate(Player2.name, player2.position, Quaternion.identity, 0);
+       
+      
     }
+
+   
 
     // Update is called once per frame
     void Update()
