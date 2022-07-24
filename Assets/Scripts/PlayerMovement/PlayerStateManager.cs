@@ -46,18 +46,19 @@ public class PlayerStateManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(myview.IsMine)
-        StartCoroutine(Inputs());        
+        if (myview.IsMine)
+            Inputs();       
     }
 
-    IEnumerator Inputs()
+    [PunRPC]
+    void Inputs()
     {
         isWalking = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A);
         _isJumping = Input.GetButtonDown("Jump");
         AttackInput();
         Anime.SetBool("IsAttacking", _isAttacking);
         currentState.CheckStates();
-        yield return null;
+        
     }
     void AttackInput()
     {
