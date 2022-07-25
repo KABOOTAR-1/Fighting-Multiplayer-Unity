@@ -73,25 +73,29 @@ public class PlayerStateManager : MonoBehaviour
         {
             iSAttacking = true;
             state = Attacked.HurricaneKick;
-            hr[1].enabled = true;
-            hr[1].m_attack = true;
+            myview.RPC("star", RpcTarget.All, 1);
         }
         if (Input.GetKeyDown(KeyCode.K))
         {
             iSAttacking = true;
             state = Attacked.Punch;
-            hr[3].enabled = true;
-            hr[3].m_attack = true;
+            myview.RPC("star", RpcTarget.All, 3);
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
             iSAttacking = true;
             state = Attacked.Kick;
-            hr[0].enabled = true;
-            hr[0].m_attack = true;
+            myview.RPC("star", RpcTarget.All, 0);
         }
         
 
+    }
+
+    [PunRPC]
+    void star(int i)
+    {
+        hr[i].enabled = true;
+        hr[i].m_attack = true;
     }
 
    public void Fire()
