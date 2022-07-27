@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Photon.Pun;
 public class HurtBox : MonoBehaviour,IHurtBox
 {
     [SerializeField] private bool m_Active = true;
     [SerializeField] private GameObject m_owner = null;
-    [SerializeField] private HurtboxType m_hurtboxtype = HurtboxType.Enemy;
+    [SerializeField] private HurtboxType m_hurtboxtype;
+    private PhotonView view;
     private IHurtResponder m_hurtResponder;  
 
     public bool Active { get=>m_Active;}
@@ -25,10 +26,19 @@ public class HurtBox : MonoBehaviour,IHurtBox
 
         return true;
     }
+    void Awake()
+    {
+        view = GetComponentInParent<PhotonView>();
+    }
 
     void Start()
     {
         m_owner = transform.parent.gameObject;
+
+        if (view.IsMine)
+            m_hurtboxtype = HurtboxType.Player;
+        else
+            m_hurtboxtype = HurtboxType.Enemy;
     }
 
    
